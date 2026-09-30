@@ -3,7 +3,7 @@ import $protobuf from "protobufjs/minimal.js";
 
 // Common aliases
 const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
-const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $TypeError = $util.global.TypeError, $String = $util.global.String, $Number = $util.global.Number, $Array = $util.global.Array;
+const $Object = $util.global.Object, $undefined = $util.global.undefined, $Error = $util.global.Error, $RangeError = $util.global.RangeError, $TypeError = $util.global.TypeError, $String = $util.global.String, $Number = $util.global.Number, $Array = $util.global.Array;
 
 // Exported root namespace
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
@@ -312,7 +312,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.Request();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.Request();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -412,6 +422,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -865,7 +880,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.HeartbeatRequest();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.HeartbeatRequest();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -878,6 +903,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -1095,7 +1125,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.SetNicknameRequest(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.SetNicknameRequest();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -1120,6 +1160,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -1355,7 +1400,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.SetClientInfoRequest(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.SetClientInfoRequest();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -1380,6 +1435,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -1604,7 +1664,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.CreateRoomRequest();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.CreateRoomRequest();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -1617,6 +1687,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -1834,7 +1909,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.CreatePveRoomRequest(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.CreatePveRoomRequest();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -1859,6 +1944,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -2083,7 +2173,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.GetRoomsRequest();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.GetRoomsRequest();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -2096,6 +2196,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -2313,7 +2418,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.JoinRoomRequest(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.JoinRoomRequest();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -2338,6 +2453,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -2584,7 +2704,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.GameMoveRequest(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.GameMoveRequest();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -2618,6 +2748,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -2852,7 +2987,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.GameResetRequest();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.GameResetRequest();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -2865,6 +3010,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -3082,7 +3232,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.WatchGameRequest(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.WatchGameRequest();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -3107,6 +3267,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -3331,7 +3496,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.WatchGameExitRequest();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.WatchGameExitRequest();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -3344,6 +3519,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -3550,7 +3730,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.ClientExitRequest();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.ClientExitRequest();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -3563,6 +3753,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -4096,7 +4291,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.Response();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.Response();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -4252,6 +4457,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -4876,7 +5086,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.ClientConnectResponse(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.ClientConnectResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -4901,6 +5121,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -5136,7 +5361,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.NicknameSetResponse(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.NicknameSetResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -5161,6 +5396,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -5385,7 +5625,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.ShowOptionsResponse();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.ShowOptionsResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -5398,6 +5648,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -5648,7 +5903,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.RoomSummary(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.RoomSummary();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -5700,6 +5965,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -5980,7 +6250,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.ShowRoomsResponse();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.ShowRoomsResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -6004,6 +6284,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -6277,7 +6562,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.RoomCreateSuccessResponse(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.RoomCreateSuccessResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -6320,6 +6615,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -6633,7 +6933,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.RoomJoinSuccessResponse(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.RoomJoinSuccessResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -6694,6 +7004,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -6977,7 +7292,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.RoomJoinFailFullResponse(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.RoomJoinFailFullResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -7011,6 +7336,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -7256,7 +7586,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.RoomJoinFailNotFoundResponse(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.RoomJoinFailNotFoundResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -7281,6 +7621,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -7505,7 +7850,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.RoomPlayFailNotFoundResponse();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.RoomPlayFailNotFoundResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -7518,6 +7873,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -7790,7 +8150,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.GameStartingResponse(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.GameStartingResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -7860,6 +8230,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -8185,7 +8560,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.GameMoveSuccessResponse(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.GameMoveSuccessResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -8246,6 +8631,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -8522,7 +8912,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.GameMoveInvalidResponse();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.GameMoveInvalidResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -8535,6 +8935,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -8741,7 +9146,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.GameMoveOccupiedResponse();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.GameMoveOccupiedResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -8754,6 +9169,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -8960,7 +9380,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.GameMoveOutOfBoundsResponse();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.GameMoveOutOfBoundsResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -8973,6 +9403,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -9179,7 +9614,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.GameMoveNotYourTurnResponse();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.GameMoveNotYourTurnResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -9192,6 +9637,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -9420,7 +9870,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.GameOverResponse(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.GameOverResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -9454,6 +9914,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -9707,7 +10172,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.PveDifficultyNotSupportResponse();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.PveDifficultyNotSupportResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -9720,6 +10195,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -9948,7 +10428,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.WatchGameSuccessResponse(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.WatchGameSuccessResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -9982,6 +10472,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -10268,7 +10763,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.ClientExitResponse(), value;
+                        let end, message, value;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.ClientExitResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -10311,6 +10816,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
@@ -10554,7 +11064,17 @@ export const com = $root.com = (() => {
                             _depth = 0;
                         if (_depth > $Reader.recursionLimit)
                             throw $Error("max depth exceeded");
-                        let end = length === $undefined ? reader.len : reader.pos + length, message = _target || new $root.com.miti99.gomoku.proto.SpectatorCannotActResponse();
+                        let end, message;
+                        if (length === $undefined)
+                            end = reader.len;
+                        else {
+                            end = reader.pos + length;
+                            if (end > reader.len)
+                                throw $RangeError("index out of range");
+                            length = reader.len;
+                            reader.len = end;
+                        }
+                        message = _target || new $root.com.miti99.gomoku.proto.SpectatorCannotActResponse();
                         while (reader.pos < end) {
                             let start = reader.pos;
                             let tag = reader.tag();
@@ -10567,6 +11087,11 @@ export const com = $root.com = (() => {
                                 $util.makeProp(message, "$unknowns", false);
                                 (message.$unknowns || (message.$unknowns = [])).push(reader.raw(start, reader.pos));
                             }
+                        }
+                        if (length !== $undefined) {
+                            if (reader.pos !== end)
+                                throw $RangeError("index out of range");
+                            reader.len = length;
                         }
                         if (_end !== $undefined)
                             throw $Error("missing end group");
